@@ -17,6 +17,8 @@ int main(int argc, char * argv[])
     }
     char *inputPath = argv[1];
     char *outputPath = argv[2];
+
     //ToDo
+    
     return 0;
 }
