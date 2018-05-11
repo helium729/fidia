@@ -5,7 +5,8 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}/sources",
-                    "${workspaceFolder}"
+                    "${workspaceFolder}",
+                    "C:/Qt/Tools/mingw530_32/i686-w64-mingw32/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             },
