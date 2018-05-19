@@ -29,5 +29,7 @@ unsigned char readByte(FILE *filePointer, unsigned long location)
 	}
 
 	fseek(filePointer, location, 0);
-	fread(ch, sizeof(ch), 1, filePointer); 
+	fread(ch, sizeof(ch), 1, filePointer);
+
+	return ch[0];
 }
