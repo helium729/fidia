@@ -3,20 +3,12 @@
 unsigned char readSingleByte (char* path, unsigned long location)
 {
 	FILE *fp = NULL;
-	unsigned char ch[2];
+	unsigned char ch;
 	fp = fopen(path, "rb");
 	
-	if (fp == NULL)      
-	{
-	    printf("An IOException has occured when opening a file\n");
-	    return 0;
-	}
-	
-	fseek(fp, location, 0);
-	fread(ch, sizeof(ch), 1, fp); 
-	
-	fclose(fp);
-	return ch[0];
+	ch = readByte(fp, location);
+
+	return ch;
 }
 
 unsigned char readByte(FILE *filePointer, unsigned long location)
