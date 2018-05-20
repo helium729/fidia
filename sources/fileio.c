@@ -26,13 +26,14 @@ unsigned char readByte(FILE *filePointer, unsigned long location)
 	return ch[0];
 }
 
-unsigned char* readWord(FILE *filePointer, unsigned long location)
+unsigned int readWord(FILE *filePointer, unsigned long location)
 {
+	unsigned int result = 0;
 	unsigned long byteLocation = location * 4;
-	unsigned char r[4];
 	for(int i = 0; i < 4; i++)
 	{
-		r[i] = readByte(filePointer, byteLocation + i);
+		unsigned int temp = (unsigned int)readByte(filePointer, byteLocation + i);
+		result += temp << (24 - 8 * i);
 	}
-	return r;
+	return result;
 }
