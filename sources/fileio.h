@@ -10,4 +10,6 @@ unsigned char readSingleByte(char* path, unsigned long location);
 //read one byte in a opened file
 unsigned char readByte(FILE *filePointer, unsigned long location);
 
+unsigned char* readWord(FILE *filePointer, unsigned long location);
+
 #endif
