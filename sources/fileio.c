@@ -25,3 +25,21 @@ unsigned char readByte(FILE *filePointer, unsigned long location)
 
 	return ch[0];
 }
+
+unsigned int readWord(FILE *filePointer, unsigned long location)
+{
+	if (filePointer == NULL)      
+	{
+	    printf("An IOException has occured when opening a file\n");
+	    return 0;
+	}
+	
+	unsigned int result = 0;
+	unsigned long byteLocation = location * 4;
+	for(int i = 0; i < 4; i++)
+	{
+		unsigned int temp = (unsigned int)readByte(filePointer, byteLocation + i);
+		result += temp << (24 - 8 * i);
+	}
+	return result;
+}
