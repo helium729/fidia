@@ -23,7 +23,7 @@ int main(int argc, char * argv[])
 
     if(inputFilePointer == NULL)
     {
-	    printf("An IOException has occured when opening a file\nProgram returned -2");
+	    printf("An IOException has occured when opening a file\nProgram returned -2\n");
         //Program returns with an IO Exception
 	    return -2;
     }
