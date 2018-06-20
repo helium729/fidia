@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#define WINDOWS 1
-#define LINUX 0
+#define WINDOWS 0
+#define LINUX 1
 
 #include "fileio.h"
 
