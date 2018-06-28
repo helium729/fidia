@@ -1,7 +1,7 @@
-#ifndef DECODER
-#define DECODER
+#ifndef DECODER_H
+#define DECODER_H
 
-#include "decoder.h"
+
 
 
 

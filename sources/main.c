@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define WINDOWS 1
 #define LINUX 0
@@ -17,10 +18,8 @@ int main(int argc, char * argv[])
     
     char *inputPath = argv[1];
     char *outputPath = argv[2];
-
-    FILE *inputFilePointer = NULL;
-    fopen(inputPath, "rb");
-
+    FILE* inputFilePointer = fopen(inputPath, "rb");
+    
     if(inputFilePointer == NULL)
     {
 	    printf("An IOException has occured when opening a file\nProgram returned -2\n");
@@ -33,6 +32,5 @@ int main(int argc, char * argv[])
 #endif //WINDOWS
     
     fclose(inputFilePointer);
-
     return 0;
 }
