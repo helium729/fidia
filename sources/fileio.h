@@ -13,4 +13,6 @@ unsigned char readByte(FILE *filePointer, unsigned long location);
 //read one word in a opened file
 unsigned int readWord(FILE *filePointer, unsigned long location);
 
+int readBytes(FILE *filePointer, int number, unsigned char* buffer);
+
 #endif
