@@ -64,4 +64,7 @@ typedef struct ELF64Header
 //3--unknown
 int judgeType(FILE* fp);
 
+//
+int judgeEnding(FILE* fp);
+
 #endif

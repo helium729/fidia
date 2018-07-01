@@ -21,8 +21,11 @@ int main(int argc, char * argv[])
 
     FILE* fp;
     fp = fopen("./test0", "rb");
-    int r = judgeType(fp);
+
+    //int r = judgeType(fp);
+    int r = judgeEnding(fp);  
     printf("%d\n", r);
+
     fclose(fp);
 
 #else
@@ -46,14 +49,18 @@ int main(int argc, char * argv[])
     
     int type = judgeType(inputFilePointer);
     
-    if(type == 1)
-        printf("This is an ELF32 file\n\n");
-    else if(type == 2)
-        printf("This is an ELF64 file\n\n");
-    else if(type == 3)
+    if(type == 3)
     {
         printf("Unknown file type, program returned -3\n");
-        return -3
+        return -3;
+    }
+
+    int endianess = judgeEnding(inputFilePointer);
+
+    if(endianess == 3)
+    {
+        printf("Unkown endianess, program returned -4\n");
+        return -4;
     }
 
     fclose(inputFilePointer);
