@@ -1,5 +1,7 @@
 #include "fileio.h"
 
+#define IOD 0
+
 unsigned char readSingleByte (char* path, unsigned long location)
 {
 	FILE *fp = NULL;
@@ -20,7 +22,7 @@ unsigned char readByte(FILE *filePointer, unsigned long location)
 	    return 0;
 	}
 
-	fseek(filePointer, location, 0);
+	fseek(filePointer, location, SEEK_SET);
 	fread(ch, sizeof(char), 1, filePointer);
 
 	return ch[0];
@@ -53,8 +55,33 @@ int readBytes(FILE *filePointer, int number, unsigned char* buffer)
 	}
 
 	int r = fread(buffer, sizeof(char), number, filePointer);
+
+#if IOD
+	//printf("%d\n", r);
+#endif
+
 	if(r != number)
-		return -1;
+		return r;
 	else
 		return 0;
+}
+
+void reverseStr(char* str)
+{
+	char* buffer;
+	int offset = 0;
+	buffer = (char*)malloc(sizeof(str)/sizeof(char));
+	while(*(str + offset))
+	{
+		*(buffer + offset) = *(str + offset);
+		offset += 1;
+	}
+	offset -= 1;
+	int counter;
+	for(counter = 0; offset >= 0; offset --)
+	{
+		*(str + counter) = *(buffer + offset);
+		counter += 1;
+	}
+	*(str + counter) = '\x0';
 }
