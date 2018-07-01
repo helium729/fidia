@@ -3,12 +3,22 @@
 
 #define WINDOWS 1
 #define LINUX 0
+#define DEBUG 1
 
 #include "fileio.h"
+#include "elfreader.h"
 
 //Main entrance of the program
 int main(int argc, char * argv[])
 {
+
+#if DEBUG
+/*
+    int size = 0;
+    size = sizeof(Elf32_Ehdr) / sizeof(char);
+    printf("%d\n", size);
+*/
+#else
     if(argc != 3)
     {
         printf("Usage:\nfidia [inputPath] [outputPath]\n");
@@ -26,11 +36,9 @@ int main(int argc, char * argv[])
         //Program returns with an IO Exception
 	    return -2;
     }
-
-#if WINDOWS
-    //ToDo
-#endif //WINDOWS
     
     fclose(inputFilePointer);
+#endif
+
     return 0;
 }
