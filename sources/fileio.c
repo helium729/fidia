@@ -66,6 +66,7 @@ int readBytes(FILE *filePointer, int number, unsigned char* buffer)
 		return 0;
 }
 
+//tested
 void reverseStr(char* str)
 {
 	char* buffer;
@@ -83,5 +84,6 @@ void reverseStr(char* str)
 		*(str + counter) = *(buffer + offset);
 		counter += 1;
 	}
-	*(str + counter) = '\x0';
+	//*(str + counter) = '\x0';
+	free(buffer);
 }

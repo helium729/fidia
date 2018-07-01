@@ -19,24 +19,24 @@ int main(int argc, char * argv[])
     printf("%d\n", size);
 */
 
-    FILE* fp;
-    fp = fopen("./test0", "rb");
+    //FILE* fp;
+    //fp = fopen("./test0", "rb");
 
     //int r = judgeType(fp);
     //int r = judgeEnding(fp);  
     //printf("%d\n", r);
-    char *a = "dasdfgh";
+    char a[8] = "dasdfgh";
     reverseStr(a);
     printf("%s\n",a);
 
-    fclose(fp);
+    //fclose(fp);
 
 #else
     if(argc != 2)
     {
         printf("Usage:\nfidia [inputPath]\n");
         //Program returns with args error
-        return -1;
+        return 0;
     }
     
     char *inputPath = argv[1];

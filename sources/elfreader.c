@@ -21,12 +21,12 @@ int judgeType(FILE* fp)
     {
         if(buff[4] == '\x01')
         {
-            printf("\nThis is an ELF32 file\n\n");
+            printf("\nThis is an ELF32 file\n");
             return 1;
         }
         else if(buff[4] == '\x02')
         {
-            printf("This is an ELF64 file\n\n");
+            printf("This is an ELF64 file\n");
             return 2;
         }
         else
@@ -45,12 +45,12 @@ int judgeEnding(FILE* fp)
     int r = readBytes(fp, 1, buffer);
     if(buffer[0] == '\x01')
     {
-        printf("Little endianess");
+        printf("Little endianess\n");
         return 1;
     }
     else if(buffer[0] == '\x02')
     {
-        printf("Big endianess");
+        printf("Big endianess\n");
         return 2;
     }
     else
