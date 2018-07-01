@@ -16,7 +16,7 @@ unsigned char readByte(FILE *filePointer, unsigned long location)
 	unsigned char ch[2];
 	if (filePointer == NULL)      
 	{
-	    printf("An IOException has occured when opening a file\nError section: byte %d\n", location);
+	    printf("An IOException has occured when opening a file\nError section: byte %ld\n", location);
 	    return 0;
 	}
 
