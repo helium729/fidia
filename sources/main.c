@@ -17,7 +17,7 @@ int main(int argc, char * argv[])
     int size = 0;
     size = sizeof(Elf32_Ehdr) / sizeof(char);
     printf("%d\n", size);
-*/
+
 
     //FILE* fp;
     //fp = fopen("./test0", "rb");
@@ -30,6 +30,7 @@ int main(int argc, char * argv[])
     printf("%s\n",a);
 
     //fclose(fp);
+*/
 
 #else
     if(argc != 2)
