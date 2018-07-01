@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 #define WINDOWS 1
 #define LINUX 0
 #define DEBUG 0
+
 
 #include "fileio.h"
 #include "elfreader.h"
