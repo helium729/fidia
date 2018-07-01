@@ -3,20 +3,16 @@
 
 #define ELFD 0
 
+//tested
 int judgeType(FILE* fp)
 {
     fseek(fp, 0, SEEK_SET);
+
     unsigned char buff[8];
     buff[7] = 0;
     int r = readBytes(fp, 7, buff);
+
     fseek(fp, 0, SEEK_SET);
-#if ELFD
-/*
-    for(int i = 0; i < 5; i++)
-        printf("%2x ", buff[i]);
-    printf("\n");
-*/
-#endif
 
     if(r)
         return 3;
@@ -42,10 +38,11 @@ int judgeType(FILE* fp)
 
 int judgeEnding(FILE* fp)
 {
-    fseek(fp, 0, SEEK_SET);
-    unsigned char buffer[3];
-    buffer[2] == 0;
-    int r = readBytes(fp, 2, buffer);
+    fseek(fp, 0x05, SEEK_SET);
+
+    unsigned char buffer[2];
+    buffer[1] == 0;
+    int r = readBytes(fp, 1, buffer);
     if(buffer[0] == '\x01')
     {
         printf("Little endianess");
@@ -58,4 +55,6 @@ int judgeEnding(FILE* fp)
     }
     else
         return 3;
+
+    fseek(fp, 0, SEEK_SET);
 }

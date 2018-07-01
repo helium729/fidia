@@ -23,8 +23,11 @@ int main(int argc, char * argv[])
     fp = fopen("./test0", "rb");
 
     //int r = judgeType(fp);
-    int r = judgeEnding(fp);  
-    printf("%d\n", r);
+    //int r = judgeEnding(fp);  
+    //printf("%d\n", r);
+    char *a = "dasdfgh";
+    reverseStr(a);
+    printf("%s\n",a);
 
     fclose(fp);
 
