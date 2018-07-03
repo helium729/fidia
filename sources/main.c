@@ -11,24 +11,6 @@ int main(int argc, char * argv[])
 {
 
 #if DEBUG
-/*
-    int size = 0;
-    size = sizeof(Elf32_Ehdr) / sizeof(char);
-    printf("%d\n", size);
-
-
-    //FILE* fp;
-    //fp = fopen("./test0", "rb");
-
-    //int r = judgeType(fp);
-    //int r = judgeEnding(fp);  
-    //printf("%d\n", r);
-    char a[8] = "dasdfgh";
-    reverseStr(a);
-    printf("%s\n",a);
-
-    //fclose(fp);
-*/
 
 #else
     if(argc != 2)
@@ -45,7 +27,6 @@ int main(int argc, char * argv[])
     if(inputFilePointer == NULL)
     {
 	    printf("An IOException has occured when opening a file\nProgram returned -2\n");
-        //Program returns with an IO Exception
 	    return -2;
     }
     
