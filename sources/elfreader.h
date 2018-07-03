@@ -64,7 +64,11 @@ typedef struct ELF64Header
 //3--unknown
 int judgeType(FILE* fp);
 
-//
+//1--little
+//2--big
+//3--unknown
 int judgeEnding(FILE* fp);
+
+Elf64_Ehdr readHeader(FILE* fp);
 
 #endif

@@ -46,8 +46,13 @@ int main(int argc, char * argv[])
         return -4;
     }
 
+    struct ELF64Header header = readHeader(inputFilePointer);
+    printf("Size of header: %ld bytes\n", sizeof(header));
+
     fclose(inputFilePointer);
 #endif
+
+    
 
     return 0;
 }
