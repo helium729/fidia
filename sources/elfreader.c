@@ -60,6 +60,7 @@ int judgeEnding(FILE* fp)
     fseek(fp, 0, SEEK_SET);
 }
 
+//tested
 Elf64_Ehdr readHeader(FILE* fp)
 {
     fseek(fp, 0, SEEK_SET);
@@ -72,6 +73,7 @@ Elf64_Ehdr readHeader(FILE* fp)
     return header;
 }
 
+//tested
 Elf64_Shdr* readSectionHeader(FILE* fp, Elf64_Offset offset, Elf64_Half num)
 {
     fseek(fp, offset, SEEK_SET);
