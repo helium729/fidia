@@ -46,8 +46,8 @@ int main(int argc, char * argv[])
     //Only when little endianess
     struct ELF64Header header = readHeader(inputFilePointer);
     printf("Size of header: %ld bytes\n", sizeof(header));
-    printf("Program offset: %lx\t Section Offset: %lx\n", header.e_poff, header.e_soff);
-    printf("Section header size:%lx \theader number: %x\n", sizeof(Elf64_Shdr), header.e_shnum);
+    printf("Program offset: %lx\tSection Offset: %lx\n", header.e_poff, header.e_soff);
+    printf("Section header size:%lx \tHeader number: %x\n", sizeof(Elf64_Shdr), header.e_shnum);
 
     Elf64_Shdr textHeader;
     Elf64_Shdr* sections = readSectionHeader(inputFilePointer, header.e_soff, header.e_shnum);
@@ -57,6 +57,8 @@ int main(int argc, char * argv[])
             textHeader = *(sections + i);
     }
     free(sections);
+    printf("Text section offset: %lx\n", textHeader.sh_offset);
+    printf("Text section size : %lx\n", textHeader.sh_size);
 
     fclose(inputFilePointer);
 #endif

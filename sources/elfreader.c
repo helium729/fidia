@@ -81,10 +81,6 @@ Elf64_Shdr* readSectionHeader(FILE* fp, Elf64_Offset offset, Elf64_Half num)
     struct ELF64SectionHeader* header;
     header = (Elf64_Shdr*)malloc(sizeof(Elf64_Shdr)*num);
     fread(header, sizeof(Elf64_Shdr), num, fp);
-    for(int i = 0; i < num; i ++)
-    {
-        printf("Flag: %lx\n", (header + i)->sh_flags);
-    }
 
     return header;
 }
