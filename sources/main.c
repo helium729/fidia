@@ -23,7 +23,6 @@ int main(int argc, char * argv[])
     char *inputPath = argv[1];
 
     FILE* inputFilePointer = fopen(inputPath, "rb");
-    
     if(inputFilePointer == NULL)
     {
 	    printf("An IOException has occured when opening a file\nProgram returned -2\n");
@@ -31,7 +30,6 @@ int main(int argc, char * argv[])
     }
     
     int type = judgeType(inputFilePointer);
-    
     if(type == 3)
     {
         printf("Unknown file type, program returned -3\n");
@@ -39,13 +37,13 @@ int main(int argc, char * argv[])
     }
 
     int endianess = judgeEnding(inputFilePointer);
-
     if(endianess == 3)
     {
         printf("Unkown endianess, program returned -4\n");
         return -4;
     }
 
+    //Only when little endianess
     struct ELF64Header header = readHeader(inputFilePointer);
     printf("Size of header: %ld bytes\n", sizeof(header));
     printf("Program offset: %lx\t Section Offset: %lx\n", header.e_poff, header.e_soff);
