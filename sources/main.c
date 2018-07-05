@@ -48,6 +48,17 @@ int main(int argc, char * argv[])
 
     struct ELF64Header header = readHeader(inputFilePointer);
     printf("Size of header: %ld bytes\n", sizeof(header));
+    printf("Program offset: %lx\t Section Offset: %lx\n", header.e_poff, header.e_soff);
+    printf("Section header size:%lx \theader number: %x\n", sizeof(Elf64_Shdr), header.e_shnum);
+
+    Elf64_Shdr textHeader;
+    Elf64_Shdr* sections = readSectionHeader(inputFilePointer, header.e_soff, header.e_shnum);
+    for(int i = 0; i < header.e_shnum; i ++)
+    {
+        if((sections + i)->sh_flags == 0x42)
+            textHeader = *(sections + i);
+    }
+    free(sections);
 
     fclose(inputFilePointer);
 #endif

@@ -65,9 +65,24 @@ Elf64_Ehdr readHeader(FILE* fp)
     fseek(fp, 0, SEEK_SET);
 
     struct ELF64Header header;
-    fread(&header, sizeof(Elf32_Ehdr), 1, fp);
-    
+    fread(&header, sizeof(Elf64_Ehdr), 1, fp);
+
     fseek(fp, 0, SEEK_SET);
+
+    return header;
+}
+
+Elf64_Shdr* readSectionHeader(FILE* fp, Elf64_Offset offset, Elf64_Half num)
+{
+    fseek(fp, offset, SEEK_SET);
+
+    struct ELF64SectionHeader* header;
+    header = (Elf64_Shdr*)malloc(sizeof(Elf64_Shdr)*num);
+    fread(header, sizeof(Elf64_Shdr), num, fp);
+    for(int i = 0; i < num; i ++)
+    {
+        printf("Flag: %lx\n", (header + i)->sh_flags);
+    }
 
     return header;
 }
