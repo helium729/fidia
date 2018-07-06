@@ -46,6 +46,7 @@ unsigned int readWord(FILE *filePointer, unsigned long location)
 	return result;
 }
 
+//tested
 int readBytes(FILE *filePointer, int number, unsigned char* buffer)
 {
 	if (filePointer == NULL)      

@@ -36,6 +36,7 @@ int judgeType(FILE* fp)
         return 3;    
 }
 
+//tested
 int judgeEnding(FILE* fp)
 {
     fseek(fp, 0x05, SEEK_SET);
@@ -57,4 +58,29 @@ int judgeEnding(FILE* fp)
         return 3;
 
     fseek(fp, 0, SEEK_SET);
+}
+
+//tested
+Elf64_Ehdr readHeader(FILE* fp)
+{
+    fseek(fp, 0, SEEK_SET);
+
+    struct ELF64Header header;
+    fread(&header, sizeof(Elf64_Ehdr), 1, fp);
+
+    fseek(fp, 0, SEEK_SET);
+
+    return header;
+}
+
+//tested
+Elf64_Shdr* readSectionHeader(FILE* fp, Elf64_Offset offset, Elf64_Half num)
+{
+    fseek(fp, offset, SEEK_SET);
+
+    struct ELF64SectionHeader* header;
+    header = (Elf64_Shdr*)malloc(sizeof(Elf64_Shdr)*num);
+    fread(header, sizeof(Elf64_Shdr), num, fp);
+
+    return header;
 }
