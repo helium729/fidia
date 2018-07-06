@@ -58,22 +58,21 @@ int main(int argc, char * argv[])
     {
         //printf("%lx\n", (sections + i)->sh_flags);
         if((sections + i)->sh_flags == 0x6)
+        {
             textHeader = *(sections + i);
-        else
-            continue;
-        printf("\nSection offset: 0x%lx\n", textHeader.sh_offset);
-        printf("Section size : %ld\n", textHeader.sh_size);
-        fseek(inputFilePointer, textHeader.sh_offset, SEEK_SET);
+            printf("\nSection offset: 0x%lx\n", textHeader.sh_offset);
+            printf("Section size : %ld\n", textHeader.sh_size);
+            fseek(inputFilePointer, textHeader.sh_offset, SEEK_SET);
 
         
-        printf("%ld", sizeof(buffer)/sizeof(unsigned char));
+            //printf("%ld", sizeof(buffer)/sizeof(unsigned char));
 
-        fread(buffer, sizeof(char), textHeader.sh_size, inputFilePointer);
-        for(int j = 0; j < textHeader.sh_size; j++)
-            //printf("%2x ", *(buffer + j));
-        //printf("\n");
-        linericScan(buffer, textHeader.sh_size);
-
+            fread(buffer, sizeof(char), textHeader.sh_size, inputFilePointer);
+            //for(int j = 0; j < textHeader.sh_size; j++)
+                //printf("%2x ", *(buffer + j));
+            //printf("\n");
+            linericScan(buffer, textHeader.sh_size, textHeader.sh_offset);
+        }
     }
     free(sections);
 
